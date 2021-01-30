@@ -44,24 +44,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         holder.tvSummary.setText(dataModel.getSummary());
         holder.tvDate.setText(dataModel.getCreatedAt());
         holder.tvUser.setText(dataModel.getCreatedBy());
-        if(TextUtils.isEmpty(dataModel.getPhoto())){
-            holder.ivPhoto.setVisibility(View.GONE);
-
-            holder.llTextPanel.setBackground(null);
-            holder.tvTitle.setTextColor(Color.BLACK);
-            holder.tvUser.setTextColor(Color.BLACK);
-            holder.tvDate.setTextColor(Color.BLACK);
-            holder.tvSummary.setTextColor(Color.BLACK);
-        } else {
-            Picasso.get().load(dataModel.getPhoto()).into(holder.ivPhoto);
-            holder.ivPhoto.setVisibility(View.VISIBLE);
-
-            holder.llTextPanel.setBackgroundColor(ContextCompat.getColor(holder.llTextPanel.getContext(), R.color.news_item_overlay_color));
-            holder.tvTitle.setTextColor(Color.WHITE);
-            holder.tvUser.setTextColor(Color.WHITE);
-            holder.tvDate.setTextColor(Color.WHITE);
-            holder.tvSummary.setTextColor(Color.WHITE);
-        }
         setViewClickable(holder, holder.itemView);
     }
 
