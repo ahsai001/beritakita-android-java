@@ -44,6 +44,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         holder.tvSummary.setText(dataModel.getSummary());
         holder.tvDate.setText(dataModel.getCreatedAt());
         holder.tvUser.setText(dataModel.getCreatedBy());
+        Picasso.get().load(dataModel.getPhoto()).into(holder.ivPhoto);
         setViewClickable(holder, holder.itemView);
     }
 

@@ -122,10 +122,7 @@ public class NewsDetailActivity extends AppCompatActivity {
         tvDate.setText(newsDetail.getCreatedAt());
         tvUser.setText(newsDetail.getCreatedBy());
         tvBody.setText(newsDetail.getBody());
-
-        if(!TextUtils.isEmpty(newsDetail.getPhoto())){
-            Picasso.get().load(newsDetail.getPhoto()).into(ivPhoto);
-        }
+        Picasso.get().load(newsDetail.getPhoto()).into(ivPhoto);
     }
 
     @Override
