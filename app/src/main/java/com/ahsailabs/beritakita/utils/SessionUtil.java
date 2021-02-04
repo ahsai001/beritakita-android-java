@@ -40,4 +40,13 @@ public class SessionUtil {
         loginData.setName(sharedPreferences.getString(Config.DATA_NAME, ""));
         return loginData;
     }
+
+    public static void logout(Context context) {
+        SharedPreferences.Editor editor = context.getSharedPreferences(Config.APP_PREFERENCES, Context.MODE_PRIVATE).edit();
+        editor.remove(Config.DATA_TOKEN);
+        editor.remove(Config.DATA_NAME);
+        editor.remove(Config.DATA_USERNAME);
+        editor.remove(Config.DATA_ISLOGGEDIN);
+        editor.apply();
+    }
 }
