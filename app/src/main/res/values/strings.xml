@@ -118,4 +118,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_add_news">AddNewsActivity</string>
     <string name="wording_please_wait">Please wait</string>
+    <string name="please_wait">Mohon tunggu</string>
 </resources>

@@ -43,6 +43,7 @@ public class HomeFragment extends Fragment {
     private SwipeRefreshLayoutUtil swipeRefreshLayoutUtil;
     private ShimmerFrameLayout sflLoading;
 
+    private String keyword = "";
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -130,7 +131,7 @@ public class HomeFragment extends Fragment {
         AndroidNetworking.post(Config.getNewsListUrl())
                 .setOkHttpClient(HttpUtil.getCLient(getActivity()))
                 .addBodyParameter("groupcode", Config.GROUP_CODE)
-                .addBodyParameter("keyword", "")
+                .addBodyParameter("keyword", keyword)
                 .setTag("newslist")
                 .setPriority(Priority.HIGH)
                 .build()

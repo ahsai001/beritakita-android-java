@@ -1,5 +1,7 @@
 package com.ahsailabs.beritakita;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private NavigationView navigationView;
+
+    public static void start(Context context) {
+        Intent mainIntent = new Intent(context, MainActivity.class);
+        context.startActivity(mainIntent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
