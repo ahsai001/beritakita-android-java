@@ -1,7 +1,5 @@
 package com.ahsailabs.beritakita;
 
-import android.accounts.AuthenticatorException;
-import android.accounts.OperationCanceledException;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,9 +21,6 @@ import com.ahsailabs.beritakita.ui.login.models.LoginData;
 import com.ahsailabs.beritakita.utils.SessionUtil;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
-
-import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -42,8 +37,13 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                boolean isLoggedIn = SessionUtil.isLoggedIn(MainActivity.this);
+                if(isLoggedIn){
+                    AddNewsActivity.start(MainActivity.this);
+                } else {
+                    NavController navController = Navigation.findNavController(MainActivity.this, R.id.nav_host_fragment);
+                    navController.navigate(R.id.nav_login);
+                }
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -63,6 +63,11 @@ public class MainActivity extends AppCompatActivity {
             public void onDestinationChanged(@NonNull NavController controller,
                                              @NonNull NavDestination destination, @Nullable Bundle arguments) {
                 refreshDrawer();
+                if(destination.getId() == R.id.nav_login){
+                    fab.hide();
+                } else {
+                    fab.show();
+                }
             }
         });
     }

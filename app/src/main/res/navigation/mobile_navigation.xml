@@ -17,9 +17,9 @@
         android:label="@string/menu_login"
         tools:layout="@layout/login_layout" />
 
-    <fragment
+    <dialog
         android:id="@+id/nav_logout"
-        android:name="com.ahsailabs.beritakita.ui.login.LoginFragment"
+        android:name="com.ahsailabs.beritakita.ui.logout.LogoutDialogFragment"
         android:label="@string/menu_logout"
         tools:layout="@layout/login_layout" />
 

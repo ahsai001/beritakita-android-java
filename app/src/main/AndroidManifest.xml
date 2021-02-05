@@ -3,7 +3,8 @@
     package="com.ahsailabs.beritakita">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,6 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".AddNewsActivity"
+            android:label="@string/title_activity_add_news"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".NewsDetailActivity"
             android:label="@string/title_activity_news_detail"
@@ -24,6 +29,9 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".LatihanUiActivity">
         </activity>
     </application>
 
