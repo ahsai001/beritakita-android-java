@@ -38,6 +38,7 @@ public class LoginFragment extends Fragment {
     private TextInputEditText etPassword;
     private MaterialButton btnLogin;
     private LinearLayout llLoginForm;
+
     private LinearLayout llLoadingPanel;
     private ProgressBar pbLoadingIndicator;
 
@@ -142,6 +143,8 @@ public class LoginFragment extends Fragment {
                                     .build();
                             NavHostFragment.findNavController(LoginFragment.this)
                                     .navigate(R.id.nav_home, null, navOptions);
+                            //or in this case, we can use navigateUp()
+                            //NavHostFragment.findNavController(LoginFragment.this).navigateUp();
                         } else {
                             switch (response.getStatus()){
                                 case -6: InfoUtil.showToast(getContext(), "Username atau password anda salah"); break;
