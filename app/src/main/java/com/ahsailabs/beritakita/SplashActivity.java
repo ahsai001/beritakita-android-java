@@ -2,6 +2,10 @@ package com.ahsailabs.beritakita;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 
@@ -39,5 +43,20 @@ public class SplashActivity extends AppCompatActivity {
     private void openMainPage() {
         MainActivity.start(SplashActivity.this);
         finish();
+    }
+
+
+    private String getVersionName(Context context){
+        //cara 1:
+        //return BuildConfig.VERSION_NAME;
+
+        //cara 2:
+        try {
+            PackageInfo pi = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            return pi.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
