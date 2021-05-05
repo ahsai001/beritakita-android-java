@@ -117,6 +117,7 @@ public class NewsDetailActivity extends AppCompatActivity {
 
     private void updateViews(NewsDetail newsDetail) {
         tvTitle.setText(newsDetail.getTitle());
+        //setTitle(newsDetail.getTitle());
         getSupportActionBar().setTitle(newsDetail.getTitle());
 
         tvDate.setText(newsDetail.getCreatedAt());
