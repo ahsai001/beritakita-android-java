@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -60,6 +61,8 @@ public class AddNewsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_news);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         fab = findViewById(R.id.fab);
         hideLoading();
@@ -152,6 +155,12 @@ public class AddNewsActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        AndroidNetworking.cancel("addnews");
+        super.onDestroy();
+    }
+
     private void loadViews() {
         tilTitle = findViewById(R.id.tilTitle);
         tietTitle = findViewById(R.id.tietTitle);
@@ -239,6 +248,15 @@ public class AddNewsActivity extends AppCompatActivity {
 
     private void hideLoading(){
         fab.shrink();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==android.R.id.home){
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public static void start(Context context){
